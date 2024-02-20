@@ -10,18 +10,18 @@ const Home = () => {
 
   const articulosFiltrados = filter ? MOCK_DATA.filter((article: any) => article[type].toLowerCase().includes(filter.toLowerCase())) : MOCK_DATA;
   const articulosRenderizados = articulosFiltrados.map((article: any, index: number) => (
-    <Article key={index} article={article} />
+    <Article key={index} article={article}/>
   ));
 
   return (
     <Box>
-      <HeaderArticles 
+      <HeaderArticles
         typeSearch={type}
         setFilter={setFilter}
         setType={setType}
       />
       <Divider variant="middle" />
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <Box className="grid-container">
         {articulosRenderizados}
       </Box>
     </Box>
