@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <Box>
       <HeaderArticles />
-      <Divider />
+      <Divider variant="middle"/>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         <Article articles={MOCK_DATA}/>
       </Box>

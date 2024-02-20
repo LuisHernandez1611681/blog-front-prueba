@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import './App.css'
 import DrawerAppBar from './components/DrawerAppBar'
-import Home from './views/Home'
+import RoutesComponent from './routes'
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
           <DrawerAppBar />
         </header>
         <Box component="main">
-          <Home />
+          <RoutesComponent />
         </Box>
       </div>
     </>
