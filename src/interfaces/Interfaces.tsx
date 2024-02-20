@@ -16,5 +16,11 @@ export interface Article {
 }
 
 export interface ArticleProps {
-  articles: Article[]; 
+  article: Article;
+}
+
+export interface HeaderArticlesProps {
+  typeSearch: string;
+  setType: (campo: string) => void;
+  setFilter: (criterio: string) => void;
 }

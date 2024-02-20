@@ -1,24 +1,59 @@
-import { Box, TextField } from "@mui/material"
+import { FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
+import { HeaderArticlesProps } from "../interfaces/Interfaces";
 
-const HeaderArticles = () => {
+const HeaderArticles: React.FC<HeaderArticlesProps> = ({ setFilter, typeSearch, setType }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setFilter(e.target.value);
+  const handleSelectChange = (e: SelectChangeEvent<string>) => setType(e.target.value);
+
   return (
-    <Box
-      display='flex'
-      justifyContent='space-between'
+    <Grid
+      container
+      spacing={2}
+      mb={1}
     >
-      <h3>Articulos</h3>
-      <TextField
-        id="search"
-        label="Buscar articulo"
-        variant="outlined"
-        InputProps={{
-          startAdornment: (
-            <SearchIcon style={{ color: 'gray' }} />
-          ),
-        }}
-      />
-    </Box>
+      <Grid item xs={12} md={6}>
+        <Typography variant="h5"
+          sx={{
+            textAlign: { xs: 'center', sm: 'left' }
+          }}>
+          Articulos
+        </Typography>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          <Grid item xs={12} md={6}>
+            <FormControl fullWidth>
+              <InputLabel id="select-campo-busqueda">Tipo</InputLabel>
+              <Select
+                labelId="select-campo-busqueda"
+                value={typeSearch}
+                label="Tipo"
+                onChange={handleSelectChange}
+              >
+                <MenuItem value="title">Título</MenuItem>
+                <MenuItem value="author">Autor</MenuItem>
+                <MenuItem value="description">Contenido</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              id="search"
+              label="Buscar"
+              variant="outlined"
+              InputProps={{
+                startAdornment: (
+                  <SearchIcon style={{ color: 'gray' }} />
+                ),
+              }}
+              onChange={handleChange}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
   )
 }
 
