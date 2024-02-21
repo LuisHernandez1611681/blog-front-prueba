@@ -17,7 +17,7 @@ const HeaderArticles: React.FC<HeaderArticlesProps> = ({ setFilter, typeSearch, 
           sx={{
             textAlign: { xs: 'center', sm: 'left' }
           }}>
-          Articulos
+          Artículos
         </Typography>
       </Grid>
       <Grid item xs={12} md={6}>
@@ -33,7 +33,7 @@ const HeaderArticles: React.FC<HeaderArticlesProps> = ({ setFilter, typeSearch, 
               >
                 <MenuItem value="title">Título</MenuItem>
                 <MenuItem value="author">Autor</MenuItem>
-                <MenuItem value="description">Contenido</MenuItem>
+                <MenuItem value="content">Contenido</MenuItem>
               </Select>
             </FormControl>
           </Grid>

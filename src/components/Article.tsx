@@ -4,7 +4,7 @@ import { ArticleProps } from "../interfaces/Interfaces";
 
 const Article: React.FC<ArticleProps> = ({ article }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const getDescription = () => isExpanded ? article.description : article.description.substring(0, 70) + '...';
+  const getDescription = () => isExpanded ? article.content : article.content.substring(0, 70) + '...';
 
   return (
     <Box className={`grid-item ${isExpanded ? 'expanded' : ''}`}>

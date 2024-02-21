@@ -12,7 +12,7 @@ export interface Article {
   title: string;
   author: string;
   date: string;
-  description: string;
+  content: string;
 }
 
 export interface ArticleProps {
