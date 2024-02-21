@@ -10,20 +10,31 @@ const Home = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_URL}/articles`)
-      .then(response => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${API_URL}/articles`);
         if (!response.ok) {
-          throw new Error('No se pudo obtener los datos');
+          throw new Error('Could not get data');
         }
-        return response.json();
-      })
-      .then(data => {
-        setArticles(data); // Actualizar el estado con los datos recibidos
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }, []); // Ejecutar solo una vez al montar el componente
+        const data = await response.json();
+        setArticles(data);
+        localStorage.setItem('articles', JSON.stringify(data));
+      } catch (error) {
+        console.error('Error getting data:', error);
+        getLocalStorage();
+      }
+    };
+    fetchData();
+  }, []);// Ejecutar solo una vez al montar el componente
+
+  const getLocalStorage = () => {
+    const storedArticles = localStorage.getItem('articles');
+    if (storedArticles !== null && typeof storedArticles === 'string') {
+      setArticles(JSON.parse(storedArticles));
+    } else {
+      setArticles([]);
+    }
+  };
 
   const articulosFiltrados = filter ? articles.filter((article: any) => article[type].toLowerCase().includes(filter.toLowerCase())) : articles;
   const articulosRenderizados = articulosFiltrados.map((article: any, index: number) => (
