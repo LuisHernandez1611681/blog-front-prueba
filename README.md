@@ -1,6 +1,6 @@
 # blog-front-prueba
 
-Este es el frontend para consultar y crear artículos para el siguiente proyecto backend: https://github.com/LuisHernandez1611681/blog-backend-prueba
+Este es el frontend para consultar y crear artículos ocupamos el siguiente proyecto de backend: https://github.com/LuisHernandez1611681/blog-backend-prueba
 
 
 # Instrucciones de Instalación:
