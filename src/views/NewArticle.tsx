@@ -1,5 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import { API_URL } from "../constants/constants";
 
 const NewArticle = () => {
   const [title, setTitle] = useState('');
@@ -23,9 +24,30 @@ const NewArticle = () => {
     
     console.log('Formulario enviado:', { title, author, date, content });
 
-    setTitle('');
-    setAuthor('');
-    setContent('');
+    fetch(`${API_URL}/articles`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'title': title,
+        'author': author,
+        'created_at': date,
+        'content': content
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('No se pudo obtener los datos');
+      }
+      setTitle('');
+      setAuthor('');
+      setContent('');
+      window.location.href = '/';
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   };
 
   return (

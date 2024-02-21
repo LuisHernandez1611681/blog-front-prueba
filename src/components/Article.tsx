@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Card, CardActions, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import { ArticleProps } from "../interfaces/Interfaces";
 
 const Article: React.FC<ArticleProps> = ({ article }) => {
@@ -9,20 +9,14 @@ const Article: React.FC<ArticleProps> = ({ article }) => {
   return (
     <Box className={`grid-item ${isExpanded ? 'expanded' : ''}`}>
       <Card style={{ margin: '5px', overflow: 'hidden' }}>
-        <CardContent>
-          <Typography variant="h5" component="h2">{article.title}</Typography>
-          <Typography color="textSecondary" gutterBottom>{article.author}</Typography>
-          <Typography color="textSecondary" gutterBottom>{article.date}</Typography>
-          <Typography variant="body2" component="p">{getDescription()}</Typography>
-        </CardContent>
-        <CardActions style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button
-            size="small"
-            onClick={() => setIsExpanded(!isExpanded)}
-          >
-            {isExpanded ? "Cerrar" : "Leer más"}
-          </Button>
-        </CardActions>
+        <CardActionArea onClick={() => setIsExpanded(!isExpanded)}>
+          <CardContent>
+            <Typography variant="h5" component="h2">{article.title}</Typography>
+            <Typography color="textSecondary" gutterBottom>{article.author}</Typography>
+            <Typography color="textSecondary" gutterBottom>{article.created_at}</Typography>
+            <Typography variant="body2" component="p">{getDescription()}</Typography>
+          </CardContent>
+        </CardActionArea>
       </Card>
     </Box>
   );

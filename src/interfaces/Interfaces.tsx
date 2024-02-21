@@ -11,7 +11,7 @@ export interface DrawerContentProps {
 export interface Article {
   title: string;
   author: string;
-  date: string;
+  created_at: string;
   content: string;
 }
 
