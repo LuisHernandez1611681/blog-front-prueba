@@ -48,6 +48,7 @@ const NavBar: React.FC<DrawerContentProps> = ({ navTitle, navItems, onDrawerTogg
               sx={{ color: '#FFF' }}
               component={Link}
               to={item.path}
+              disabled={status == 'Offline' && item.path == '/new-article' ? true : false}
             >
               {item.label}
             </Button>
