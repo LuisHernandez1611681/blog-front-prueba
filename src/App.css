@@ -16,3 +16,9 @@ body main {
 .expanded {
   grid-row-end: span 4;
 }
+
+.btnIsOnline {
+  border: '1px solid #CCC';
+  padding: 5px;
+  border-radius: 5px;
+}

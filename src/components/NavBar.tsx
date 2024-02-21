@@ -2,9 +2,12 @@ import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/mater
 import MenuIcon from '@mui/icons-material/Menu';
 import { DrawerContentProps } from "../interfaces/Interfaces";
 import { Link } from "react-router-dom";
+import { useNetworkStatus } from "../context/NetworkStatusContext";
 
 
 const NavBar: React.FC<DrawerContentProps> = ({ navTitle, navItems, onDrawerToggle }) => {
+  const status = useNetworkStatus();
+
   return (
     <AppBar component='nav' position="static">
       <Toolbar>
@@ -14,7 +17,7 @@ const NavBar: React.FC<DrawerContentProps> = ({ navTitle, navItems, onDrawerTogg
           onClick={onDrawerToggle}
           sx={{
             mr: 2,
-            display: { sm: 'none' },
+            display: {sm: 'none'},
           }}
         >
           <MenuIcon />
@@ -27,6 +30,17 @@ const NavBar: React.FC<DrawerContentProps> = ({ navTitle, navItems, onDrawerTogg
         >
           {navTitle}
         </Typography>
+        
+        <Typography
+          mr={5}
+          className="btnIsOnline"
+          style={{
+            background: status == 'Online' ? 'green' : 'red'
+          }}
+        >
+          {status}
+        </Typography>
+
         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           {navItems.map((item, index) => (
             <Button

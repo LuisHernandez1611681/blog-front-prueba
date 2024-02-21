@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface DrawerAppBarProps {
   window?: () => Window;
 }
@@ -23,4 +25,8 @@ export interface HeaderArticlesProps {
   typeSearch: string;
   setType: (campo: string) => void;
   setFilter: (criterio: string) => void;
+}
+
+export interface NetworkStatusProviderProps {
+  children: ReactNode;
 }

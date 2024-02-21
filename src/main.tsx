@@ -4,6 +4,7 @@ import App from './App.tsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import NewArticle from './views/NewArticle.tsx'
+import { NetworkStatusProvider } from './context/NetworkStatusContext.tsx'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <NetworkStatusProvider>
+      <RouterProvider router={router} />
+    </NetworkStatusProvider>
   </React.StrictMode>,
 )
