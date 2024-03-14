@@ -14,8 +14,8 @@ export const NetworkStatusProvider = ({children}: NetworkStatusProviderProps) =>
     window.addEventListener('offline', changeStatus);
 
     return () => {
-      window.addEventListener('online', changeStatus);
-      window.addEventListener('offline', changeStatus);
+      window.removeEventListener('online', changeStatus);
+      window.removeEventListener('offline', changeStatus);
     }
   }, []);
 
